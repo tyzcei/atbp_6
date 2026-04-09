@@ -1,4 +1,5 @@
 const { defineConfig, devices } = require('@playwright/test');
+
 module.exports = defineConfig({
   testDir: './e2e',
   timeout: 30000,
@@ -6,5 +7,9 @@ module.exports = defineConfig({
     baseURL: 'http://localhost:3000',
     screenshot: 'only-on-failure',
   },
+  reporter: [
+    ['line'],
+    ['allure-playwright', { outputFolder: 'allure-results' }]
+  ],
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
 });

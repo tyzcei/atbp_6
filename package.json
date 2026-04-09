@@ -1,18 +1,16 @@
 {
-  "name": "6",
+  "name": "lab-6-automation",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js",
     "test:unit": "jest --config=jest.config.allure.js",
     "test:api": "cucumber-js",
-    "test:ui": "npx playwright test --reporter=line,allure-playwright"
+    "test:ui": "npx playwright test --reporter=line,allure-playwright",
+    "test:all": "npm run test:unit && npm run test:api && npm run test:ui",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1"
   },
