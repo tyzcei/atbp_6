@@ -1,5 +1,7 @@
 const { test, expect } = require('@playwright/test');
-test('Check title', async ({ page }) => {
+
+test('Проверка текста на главной странице', async ({ page }) => {
     await page.goto('http://localhost:3000');
-    await expect(page).toHaveTitle(''); // В нашем сервере нет тега title, тест просто проверит доступность
+    const content = await page.textContent('body');
+    expect(content).toContain('Hello World!');
 });
